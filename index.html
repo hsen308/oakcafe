@@ -382,10 +382,60 @@
             line-height: 1.8;
         }
 
-        /* Menu Grid */
+        /* Menu Category Buttons */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .category-btn {
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--burgundy);
+            border: 2px solid var(--burgundy);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .category-btn:hover {
+            background: var(--burgundy-light);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 70, 85, 0.2);
+        }
+
+        .category-btn.active {
+            background: var(--burgundy);
+            color: white;
+        }
+
+        /* Menu Content */
+        .menu-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .menu-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Menu Category */
         .menu-category {
-            margin-bottom: 5rem;
-            animation: fadeInUp 0.8s ease-out;
+            margin-bottom: 4rem;
         }
 
         .category-title {
@@ -396,6 +446,15 @@
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--burgundy);
             letter-spacing: 2px;
+        }
+
+        .subcategory-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--burgundy-dark);
+            margin: 2.5rem 0 1.5rem;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .menu-grid {
@@ -666,7 +725,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 30px rgba(139, 70, 85, 0.1);
-            height: 400px;
+            height: 60vh;
         }
 
         .map-container iframe {
@@ -689,12 +748,12 @@
             margin: 0 auto 1rem;
             filter: none;
         }
-        .loading-logo img,
-.hero-logo,
-.footer-logo {
-    filter: none;
-}
 
+        .loading-logo img,
+        .hero-logo,
+        .footer-logo {
+            filter: none;
+        }
 
         .footer-logo img {
             width: 100%;
@@ -776,6 +835,15 @@
 
             .contact-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .menu-categories {
+                gap: 0.8rem;
+            }
+
+            .category-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.85rem;
             }
         }
 
@@ -862,6 +930,11 @@
                 width: 150px;
                 height: 150px;
             }
+
+            .category-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.75rem;
+            }
         }
 
         /* Fade-in animation on scroll */
@@ -875,38 +948,33 @@
             opacity: 1;
             transform: translateY(0);
         }
+
         .hero-buttons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-.cta-secondary {
-    background: var(--cream);
-    color: var(--burgundy);
-    border: 2px solid var(--cream);
-}
+        .cta-secondary {
+            background: var(--cream);
+            color: var(--burgundy);
+            border: 2px solid var(--cream);
+        }
 
-.cta-secondary::before {
-    background: var(--burgundy);
-}
+        .cta-secondary::before {
+            background: var(--burgundy);
+        }
 
-.cta-secondary:hover {
-    color: var(--cream);
-}
-.map-container {
-    height: 60vh;
-}
-
-
+        .cta-secondary:hover {
+            color: var(--cream);
+        }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-logo">
-            <!-- Replace with your logo.png -->
             <img src="logo.png" alt="oak">
         </div>
     </div>
@@ -940,22 +1008,20 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-logo">
-                <!-- Replace with your logo.png -->
                 <img src="logo.png" alt="oak">
             </div>
             <h1>oak</h1>
             <p class="tagline-hero">Grow Wild. Sip Slow</p>
             <div class="hero-buttons">
-    <a href="#menu" class="cta">Explore Our Menu</a>
-
-    <a 
-        href="https://www.google.com/maps/place/Oak+Coffee+Shop/@33.868261,35.525829,17z/data=!3m1!4b1!4m6!3m5!1s0x151f17f6b78bfa5b:0x99111f676d6fc73a!8m2!3d33.868261!4d35.525829!16s%2Fg%2F11y0zbm6mq"
-        target="_blank"
-        class="cta cta-secondary"
-    >
-        Visit Us
-    </a>
-</div>
+                <a href="#menu" class="cta">Explore Our Menu</a>
+                <a 
+                    href="https://www.google.com/maps/place/Oak+Coffee+Shop/@33.868261,35.525829,17z/data=!3m1!4b1!4m6!3m5!1s0x151f17f6b78bfa5b:0x99111f676d6fc73a!8m2!3d33.868261!4d35.525829!16s%2Fg%2F11y0zbm6mq"
+                    target="_blank"
+                    class="cta cta-secondary"
+                >
+                    Visit Us
+                </a>
+            </div>
         </div>
         <div class="scroll-indicator">
             <svg viewBox="0 0 24 24">
@@ -972,227 +1038,659 @@
             <p>Thoughtfully crafted dishes and beverages, sourced with care and prepared with passion</p>
         </div>
 
-        <!-- INSTRUCTIONS FOR ADDING YOUR MENU ITEMS:
-        
-        For each menu item, you can:
-        1. Add an image by replacing the placeholder class with an actual image:
-           <div class="item-image">
-               <img src="path-to-your-image.jpg" alt="Item Name">
-           </div>
-        
-        2. Keep the placeholder emoji if you don't have an image:
-           <div class="item-image placeholder"></div>
-        
-        3. Update the item name, price, description, and tags as needed
-        -->
+        <!-- Menu Category Buttons -->
+        <div class="menu-categories fade-in">
+            <button class="category-btn active" data-category="food">Food</button>
+            <button class="category-btn" data-category="beverages">Beverages</button>
+            <button class="category-btn" data-category="frozen-yogurt">Frozen Yogurt</button>
+            <button class="category-btn" data-category="pastries">Pastries</button>
+        </div>
 
-        <!-- Example: Breakfast Section -->
-        <div class="menu-category fade-in">
-            <h3 class="category-title">Breakfast</h3>
-            <div class="menu-grid">
-                <!-- EXAMPLE ITEM WITH IMAGE -->
-                <div class="menu-item">
-                    <div class="item-image">
-                        <!-- ADD YOUR IMAGE HERE: <img src="images/granola-bowl.jpg" alt="Granola Bowl"> -->
-                        <img src="images/granola-bowl.jpg" alt="Wild Forest Granola Bowl">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Wild Forest Granola Bowl</h4>
-                            <span class="item-price">$14</span>
-                        </div>
-                        <p class="item-description">House-made granola with seasonal berries, Greek yogurt, local honey, and toasted almonds</p>
-                        <div class="item-tags">
-                            <span class="tag">Vegetarian</span>
-                            <span class="tag">GF Option</span>
+        <!-- FOOD SECTION -->
+        <div class="menu-content active" id="food">
+            <!-- Salads -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Salads</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Garden Fresh Salad</h4>
+                                <span class="item-price">$12</span>
+                            </div>
+                            <p class="item-description">Mixed greens, cherry tomatoes, cucumbers, carrots, house vinaigrette</p>
+                            <div class="item-tags">
+                                <span class="tag">Vegan</span>
+                                <span class="tag">GF</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- EXAMPLE ITEM WITH PLACEHOLDER (NO IMAGE) -->
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Oak Eggs Benedict</h4>
-                            <span class="item-price">$18</span>
-                        </div>
-                        <p class="item-description">Poached eggs, smoked salmon, avocado, hollandaise on sourdough with herb salad</p>
-                        <div class="item-tags">
-                            <span class="tag">Chef's Pick</span>
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Caesar Salad</h4>
+                                <span class="item-price">$14</span>
+                            </div>
+                            <p class="item-description">Romaine lettuce, parmesan, croutons, classic Caesar dressing</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Slow-Rise Pancakes</h4>
-                            <span class="item-price">$16</span>
-                        </div>
-                        <p class="item-description">Fluffy buttermilk pancakes with maple butter, fresh berries, and whipped cream</p>
-                        <div class="item-tags">
-                            <span class="tag">Popular</span>
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Quinoa Power Bowl</h4>
+                                <span class="item-price">$16</span>
+                            </div>
+                            <p class="item-description">Quinoa, kale, roasted chickpeas, avocado, tahini dressing</p>
+                            <div class="item-tags">
+                                <span class="tag">Vegan</span>
+                                <span class="tag">GF</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- ADD MORE BREAKFAST ITEMS HERE -->
+            <!-- Sandwiches -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Sandwiches</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Classic BLT</h4>
+                                <span class="item-price">$14</span>
+                            </div>
+                            <p class="item-description">Bacon, lettuce, tomato, mayo on toasted sourdough</p>
+                            <div class="item-tags">
+                                <span class="tag">Classic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Turkey Avocado Club</h4>
+                                <span class="item-price">$16</span>
+                            </div>
+                            <p class="item-description">Roasted turkey, avocado, bacon, lettuce, tomato, whole wheat</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Caprese Panini</h4>
+                                <span class="item-price">$15</span>
+                            </div>
+                            <p class="item-description">Fresh mozzarella, tomatoes, basil, balsamic glaze, ciabatta</p>
+                            <div class="item-tags">
+                                <span class="tag">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Entrees -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Entrees</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Wild Mushroom Risotto</h4>
+                                <span class="item-price">$24</span>
+                            </div>
+                            <p class="item-description">Creamy arborio rice with foraged mushrooms, truffle oil, parmesan</p>
+                            <div class="item-tags">
+                                <span class="tag">Vegetarian</span>
+                                <span class="tag">Seasonal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Pan-Seared Salmon</h4>
+                                <span class="item-price">$28</span>
+                            </div>
+                            <p class="item-description">Atlantic salmon, quinoa pilaf, grilled asparagus, lemon-dill butter</p>
+                            <div class="item-tags">
+                                <span class="tag">GF</span>
+                                <span class="tag">Sustainable</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Oak Burger</h4>
+                                <span class="item-price">$22</span>
+                            </div>
+                            <p class="item-description">Grass-fed beef, aged cheddar, caramelized onions, house sauce, fries</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sides -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Sides</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Truffle Fries</h4>
+                                <span class="item-price">$8</span>
+                            </div>
+                            <p class="item-description">Hand-cut fries with truffle oil and parmesan</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Seasonal Vegetables</h4>
+                                <span class="item-price">$7</span>
+                            </div>
+                            <p class="item-description">Roasted seasonal vegetables with herbs</p>
+                            <div class="item-tags">
+                                <span class="tag">Vegan</span>
+                                <span class="tag">GF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Lunch & Dinner -->
-        <div class="menu-category fade-in">
-            <h3 class="category-title">Lunch & Dinner</h3>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Wild Mushroom Risotto</h4>
-                            <span class="item-price">$24</span>
+        <!-- BEVERAGES SECTION -->
+        <div class="menu-content" id="beverages">
+            <!-- Coffee -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Coffee</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Slow Pour Coffee</h4>
+                                <span class="item-price">$5</span>
+                            </div>
+                            <p class="item-description">Single-origin, ethically sourced, hand-poured to perfection</p>
+                            <div class="item-tags">
+                                <span class="tag">Fair Trade</span>
+                            </div>
                         </div>
-                        <p class="item-description">Creamy arborio rice with foraged mushrooms, truffle oil, parmesan, and fresh thyme</p>
-                        <div class="item-tags">
-                            <span class="tag">Vegetarian</span>
-                            <span class="tag">Seasonal</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Espresso</h4>
+                                <span class="item-price">$4</span>
+                            </div>
+                            <p class="item-description">Rich, bold espresso shot</p>
+                            <div class="item-tags">
+                                <span class="tag">Classic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Cappuccino</h4>
+                                <span class="item-price">$6</span>
+                            </div>
+                            <p class="item-description">Espresso with steamed milk and foam</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Slow-Braised Short Rib</h4>
-                            <span class="item-price">$32</span>
+            <!-- Specialty Drinks -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Specialty Drinks</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Lavender Honey Latte</h4>
+                                <span class="item-price">$7</span>
+                            </div>
+                            <p class="item-description">Espresso, steamed milk, house-made lavender honey syrup</p>
+                            <div class="item-tags">
+                                <span class="tag">Signature</span>
+                            </div>
                         </div>
-                        <p class="item-description">24-hour braised beef short rib, roasted root vegetables, red wine jus, herb mash</p>
-                        <div class="item-tags">
-                            <span class="tag">Chef's Pick</span>
-                            <span class="tag">Grass-Fed</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Matcha Latte</h4>
+                                <span class="item-price">$7</span>
+                            </div>
+                            <p class="item-description">Premium matcha powder with steamed milk</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Pan-Seared Salmon</h4>
-                            <span class="item-price">$28</span>
+            <!-- Tea -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Tea</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Herbal Tea Selection</h4>
+                                <span class="item-price">$4</span>
+                            </div>
+                            <p class="item-description">Chamomile, peppermint, or ginger</p>
+                            <div class="item-tags">
+                                <span class="tag">Organic</span>
+                            </div>
                         </div>
-                        <p class="item-description">Atlantic salmon, quinoa pilaf, grilled asparagus, lemon-dill butter</p>
-                        <div class="item-tags">
-                            <span class="tag">GF</span>
-                            <span class="tag">Sustainable</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Earl Grey</h4>
+                                <span class="item-price">$4</span>
+                            </div>
+                            <p class="item-description">Classic black tea with bergamot</p>
+                            <div class="item-tags">
+                                <span class="tag">Classic</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Oak Burger</h4>
-                            <span class="item-price">$22</span>
+            <!-- Fresh Juices & Smoothies -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Fresh Juices & Smoothies</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Fresh-Pressed Juice</h4>
+                                <span class="item-price">$8</span>
+                            </div>
+                            <p class="item-description">Rotating seasonal selection, cold-pressed daily</p>
+                            <div class="item-tags">
+                                <span class="tag">Seasonal</span>
+                                <span class="tag">Organic</span>
+                            </div>
                         </div>
-                        <p class="item-description">Grass-fed beef, aged cheddar, caramelized onions, house sauce, brioche bun, fries</p>
-                        <div class="item-tags">
-                            <span class="tag">Popular</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Berry Blast Smoothie</h4>
+                                <span class="item-price">$9</span>
+                            </div>
+                            <p class="item-description">Mixed berries, banana, yogurt, honey</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- ADD MORE LUNCH/DINNER ITEMS HERE -->
             </div>
         </div>
 
-        <!-- Beverages -->
-        <div class="menu-category fade-in">
-            <h3 class="category-title">Beverages</h3>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Slow Pour Coffee</h4>
-                            <span class="item-price">$5</span>
+        <!-- FROZEN YOGURT SECTION -->
+        <div class="menu-content" id="frozen-yogurt">
+            <!-- Flavors -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Flavors</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Classic Vanilla</h4>
+                                <span class="item-price">$6</span>
+                            </div>
+                            <p class="item-description">Creamy Madagascar vanilla bean frozen yogurt</p>
+                            <div class="item-tags">
+                                <span class="tag">Classic</span>
+                            </div>
                         </div>
-                        <p class="item-description">Single-origin, ethically sourced, hand-poured to perfection</p>
-                        <div class="item-tags">
-                            <span class="tag">Fair Trade</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Wild Berry</h4>
+                                <span class="item-price">$6</span>
+                            </div>
+                            <p class="item-description">Tangy mixed berry frozen yogurt</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Dark Chocolate</h4>
+                                <span class="item-price">$6</span>
+                            </div>
+                            <p class="item-description">Rich dark chocolate frozen yogurt</p>
+                            <div class="item-tags">
+                                <span class="tag">Decadent</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Mango Tango</h4>
+                                <span class="item-price">$6</span>
+                            </div>
+                            <p class="item-description">Tropical mango frozen yogurt</p>
+                            <div class="item-tags">
+                                <span class="tag">Seasonal</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Lavender Honey Latte</h4>
-                            <span class="item-price">$7</span>
+            <!-- Toppings -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Toppings</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Fresh Fruits</h4>
+                                <span class="item-price">$2</span>
+                            </div>
+                            <p class="item-description">Strawberries, blueberries, banana, kiwi</p>
+                            <div class="item-tags">
+                                <span class="tag">Fresh</span>
+                            </div>
                         </div>
-                        <p class="item-description">Espresso, steamed milk, house-made lavender honey syrup</p>
-                        <div class="item-tags">
-                            <span class="tag">Signature</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Crunchy Add-ons</h4>
+                                <span class="item-price">$1.5</span>
+                            </div>
+                            <p class="item-description">Granola, almonds, coconut flakes, chocolate chips</p>
+                            <div class="item-tags">
+                                <span class="tag">Crunchy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Drizzles</h4>
+                                <span class="item-price">$1</span>
+                            </div>
+                            <p class="item-description">Honey, chocolate sauce, caramel, berry coulis</p>
+                            <div class="item-tags">
+                                <span class="tag">Sweet</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Fresh-Pressed Juice</h4>
-                            <span class="item-price">$8</span>
-                        </div>
-                        <p class="item-description">Rotating seasonal selection, cold-pressed daily</p>
-                        <div class="item-tags">
-                            <span class="tag">Seasonal</span>
-                            <span class="tag">Organic</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ADD MORE BEVERAGES HERE -->
             </div>
         </div>
 
-        <!-- Desserts -->
-        <div class="menu-category fade-in">
-            <h3 class="category-title">Desserts</h3>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Chocolate Torte</h4>
-                            <span class="item-price">$12</span>
+        <!-- PASTRIES SECTION -->
+        <div class="menu-content" id="pastries">
+            <!-- Muffins -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Muffins</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Blueberry Muffin</h4>
+                                <span class="item-price">$4</span>
+                            </div>
+                            <p class="item-description">Fresh blueberries baked into fluffy muffin</p>
+                            <div class="item-tags">
+                                <span class="tag">Fresh Daily</span>
+                            </div>
                         </div>
-                        <p class="item-description">Flourless dark chocolate torte, raspberry coulis, whipped cream</p>
-                        <div class="item-tags">
-                            <span class="tag">GF</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Chocolate Chip Muffin</h4>
+                                <span class="item-price">$4</span>
+                            </div>
+                            <p class="item-description">Double chocolate chip muffin</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Banana Nut Muffin</h4>
+                                <span class="item-price">$4</span>
+                            </div>
+                            <p class="item-description">Ripe bananas with walnuts</p>
+                            <div class="item-tags">
+                                <span class="tag">Classic</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="menu-item">
-                    <div class="item-image placeholder"></div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h4 class="item-name">Seasonal Fruit Tart</h4>
-                            <span class="item-price">$10</span>
+            <!-- Croissants & Danishes -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Croissants & Danishes</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Butter Croissant</h4>
+                                <span class="item-price">$5</span>
+                            </div>
+                            <p class="item-description">Flaky, buttery French croissant</p>
+                            <div class="item-tags">
+                                <span class="tag">Classic</span>
+                            </div>
                         </div>
-                        <p class="item-description">Buttery crust, vanilla custard, fresh seasonal fruits, mint</p>
-                        <div class="item-tags">
-                            <span class="tag">Seasonal</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Almond Croissant</h4>
+                                <span class="item-price">$6</span>
+                            </div>
+                            <p class="item-description">Croissant filled with almond cream and topped with almonds</p>
+                            <div class="item-tags">
+                                <span class="tag">Signature</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Cheese Danish</h4>
+                                <span class="item-price">$5</span>
+                            </div>
+                            <p class="item-description">Sweet cream cheese filling in flaky pastry</p>
+                            <div class="item-tags">
+                                <span class="tag">Popular</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- ADD MORE DESSERTS HERE -->
+            <!-- Cookies & Brownies -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Cookies & Brownies</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Chocolate Chip Cookie</h4>
+                                <span class="item-price">$3</span>
+                            </div>
+                            <p class="item-description">Classic chocolate chip cookie, baked fresh daily</p>
+                            <div class="item-tags">
+                                <span class="tag">Classic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Double Chocolate Brownie</h4>
+                                <span class="item-price">$4</span>
+                            </div>
+                            <p class="item-description">Fudgy chocolate brownie with chocolate chips</p>
+                            <div class="item-tags">
+                                <span class="tag">Decadent</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Oatmeal Raisin Cookie</h4>
+                                <span class="item-price">$3</span>
+                            </div>
+                            <p class="item-description">Chewy oatmeal cookie with plump raisins</p>
+                            <div class="item-tags">
+                                <span class="tag">Wholesome</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cakes & Tarts -->
+            <div class="menu-category fade-in">
+                <h4 class="subcategory-title">Cakes & Tarts</h4>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Chocolate Torte</h4>
+                                <span class="item-price">$12</span>
+                            </div>
+                            <p class="item-description">Flourless dark chocolate torte with raspberry coulis</p>
+                            <div class="item-tags">
+                                <span class="tag">GF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Seasonal Fruit Tart</h4>
+                                <span class="item-price">$10</span>
+                            </div>
+                            <p class="item-description">Buttery crust with vanilla custard and fresh seasonal fruits</p>
+                            <div class="item-tags">
+                                <span class="tag">Seasonal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image placeholder"></div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-name">Carrot Cake</h4>
+                                <span class="item-price">$8</span>
+                            </div>
+                            <p class="item-description">Moist carrot cake with cream cheese frosting</p>
+                            <div class="item-tags">
+                                <span class="tag">Classic</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1249,7 +1747,6 @@
                 </div>
                 <h3>Location</h3>
                 <p>
-                    <!-- UPDATE WITH YOUR ADDRESS -->
                     123 Nature Lane<br>
                     Downtown District<br>
                     Your City, ST 12345
@@ -1265,7 +1762,6 @@
                 </div>
                 <h3>Hours</h3>
                 <p>
-                    <!-- UPDATE WITH YOUR HOURS -->
                     Monday - Friday: 7am - 9pm<br>
                     Saturday - Sunday: 8am - 10pm<br>
                     Kitchen closes 1 hour before
@@ -1280,7 +1776,6 @@
                 </div>
                 <h3>Contact</h3>
                 <p>
-                    <!-- UPDATE WITH YOUR CONTACT INFO -->
                     Phone: <a href="tel:5551234567">(555) 123-4567</a><br>
                     Email: <a href="mailto:hello@oakrestaurant.com">hello@oakrestaurant.com</a><br>
                     Reservations recommended
@@ -1289,25 +1784,23 @@
         </div>
 
         <!-- Google Maps Embed -->
-      <div class="map-container fade-in">
-    <a 
-        href="https://www.google.com/maps/place/Oak+Coffee+Shop/@33.868261,35.525829,17z"
-        target="_blank"
-        style="display:block; width:100%; height:100%;"
-    >
-        <iframe
-            src="https://www.google.com/maps?q=33.868261,35.525829&z=17&output=embed"
-            loading="lazy">
-        </iframe>
-    </a>
-</div>
-
+        <div class="map-container fade-in">
+            <a 
+                href="https://www.google.com/maps/place/Oak+Coffee+Shop/@33.868261,35.525829,17z"
+                target="_blank"
+                style="display:block; width:100%; height:100%;"
+            >
+                <iframe
+                    src="https://www.google.com/maps?q=33.868261,35.525829&z=17&output=embed"
+                    loading="lazy">
+                </iframe>
+            </a>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-logo">
-            <!-- Replace with your logo.png -->
             <img src="logo.png" alt="oak">
         </div>
         <div class="logo-footer">oak</div>
@@ -1337,6 +1830,30 @@
             link.addEventListener('click', function() {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
+            });
+        });
+
+        // Menu Category Switching
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const menuContents = document.querySelectorAll('.menu-content');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all menu contents
+                menuContents.forEach(content => content.classList.remove('active'));
+                
+                // Show selected menu content
+                const category = this.getAttribute('data-category');
+                document.getElementById(category).classList.add('active');
+                
+                // Scroll to menu section smoothly
+                document.getElementById('menu').scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
@@ -1374,3 +1891,4 @@
     </script>
 </body>
 </html>
+
