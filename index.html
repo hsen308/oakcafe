@@ -66,7 +66,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: brightness(0) invert(1);
+            filter:none;
         }
 
         @keyframes fadeInScale {
@@ -687,8 +687,14 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 1rem;
-            filter: brightness(0) invert(1);
+            filter: none;
         }
+        .loading-logo img,
+.hero-logo,
+.footer-logo {
+    filter: none;
+}
+
 
         .footer-logo img {
             width: 100%;
@@ -869,6 +875,31 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-secondary {
+    background: var(--cream);
+    color: var(--burgundy);
+    border: 2px solid var(--cream);
+}
+
+.cta-secondary::before {
+    background: var(--burgundy);
+}
+
+.cta-secondary:hover {
+    color: var(--cream);
+}
+.map-container {
+    height: 60vh;
+}
+
+
     </style>
 </head>
 <body>
@@ -914,7 +945,17 @@
             </div>
             <h1>oak</h1>
             <p class="tagline-hero">Grow Wild. Sip Slow</p>
-            <a href="#menu" class="cta">Explore Our Menu</a>
+            <div class="hero-buttons">
+    <a href="#menu" class="cta">Explore Our Menu</a>
+
+    <a 
+        href="https://www.google.com/maps/place/Oak+Coffee+Shop/@33.868261,35.525829,17z/data=!3m1!4b1!4m6!3m5!1s0x151f17f6b78bfa5b:0x99111f676d6fc73a!8m2!3d33.868261!4d35.525829!16s%2Fg%2F11y0zbm6mq"
+        target="_blank"
+        class="cta cta-secondary"
+    >
+        Visit Us
+    </a>
+</div>
         </div>
         <div class="scroll-indicator">
             <svg viewBox="0 0 24 24">
@@ -1248,15 +1289,19 @@
         </div>
 
         <!-- Google Maps Embed -->
-        <div class="map-container fade-in">
-            <!-- REPLACE THE src URL WITH YOUR GOOGLE MAPS EMBED LINK -->
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093743!2d144.9537353!3d-37.8172097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM0zCsDQ5JzAyLjAiUyAxNDTCsDU3JzEzLjQiRQ!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
+      <div class="map-container fade-in">
+    <a 
+        href="https://www.google.com/maps/place/Oak+Coffee+Shop/@33.868261,35.525829,17z"
+        target="_blank"
+        style="display:block; width:100%; height:100%;"
+    >
+        <iframe
+            src="https://www.google.com/maps?q=33.868261,35.525829&z=17&output=embed"
+            loading="lazy">
+        </iframe>
+    </a>
+</div>
+
     </section>
 
     <!-- Footer -->
